@@ -8,6 +8,7 @@ function ProviderContent({ children }) {
     const [movieList, setMovieList] = useState([]);
     const [dataFeatured, setDataFeatured] = useState(null)
     const [hideHeader, setHideHeader] = useState(false)
+    const [email, setEmail] = useState('')
 
 
 
@@ -49,6 +50,8 @@ function ProviderContent({ children }) {
         setDataFeatured,
         hideHeader, 
         setHideHeader,
+        email,
+        setEmail,
     }
 
 return (
