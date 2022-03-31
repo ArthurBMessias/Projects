@@ -1,23 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ContextContent from '../Context/ContextContent';
+import './Login.css'
 
-function Login({ history }) {
+function Login() {
   const { email, setEmail } = useContext(ContextContent);
   const [password, setPassword] = useState('');
 
-  function validateEmail() {
-    // ^[a-z]+@[a-z]+\.[a-z]+$/;
-    const regex = /\S+@\S+\.\S+/;
-    return regex.test(email);
-  }
-
-  function validatePassword() {
-    const noMagicNumberPassword = 7;
-    if (password.length >= noMagicNumberPassword) {
-      return password;
-    }
-  }
 
   return (
     <form className="loginContent">
@@ -39,7 +28,6 @@ function Login({ history }) {
       <Link
         to='/home'
         type="button"
-        disabled={ !(validateEmail() && validatePassword()) }
       >
         <p>Entrar</p>
       </Link>

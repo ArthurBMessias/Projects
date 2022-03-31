@@ -1,23 +1,21 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import renderWithRouter from '../renderWithRouter';
-import App from '../App';
+import { render, screen } from '@testing-library/react';
+import Login from '../Components/Login';
 
 describe('Test component App.js', () => {
-  beforeEach(() => {
-    renderWithRouter(<App />);
-  });
-
-  it('Includes links with texts "Entrar" ', () => {
-    const landPageComponent = screen.getByRole('link', { name: 'LandPage' });
+  it('Heading "Entrar" is on screen', () => {
+    render(<Login />);
+    const landPageComponent = screen.getByRole('heading', {
+      level: 2,
+      name: /Entrar/i,
+    });
 
     expect(landPageComponent).toBeInTheDocument();
   });
 
-  it('On click goes to "Home" page', () => {
-    const homeComponent = screen.getByRole('link', { name: 'Home' });
-    userEvent.click(homeComponent);
-    expect(screen.getByText('Originais da Netflix')).toBeInTheDocument();
-  });
+  // it('On click goes to "Home" page', () => {
+  //   const homeComponent = screen.getByRole('link', { name: 'Home' });
+  //   userEvent.click(homeComponent);
+  //   expect(screen.getByText('Originais da Netflix')).toBeInTheDocument();
+  // });
 });
